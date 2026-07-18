@@ -17,4 +17,13 @@ const SYSCTL = scripting.addModule("/ti/driverlib/SYSCTL");
 
 const Board = scripting.addModule("/ti/driverlib/Board", {}, false);
 
-SYSCTL.forceDefaultClkConfig = true;
+SYSCTL.SYSPLL_CLK2XEn    = true;
+SYSCTL.SYSPLL_Pdiv       = 1;
+SYSCTL.SYSPLL_Qdiv       = 5;
+SYSCTL.SYSPLL_CLK2XDiv   = 3;
+SYSCTL.MCLKSource        = "HSCLK";
+SYSCTL.HSCLKSource       = "SYSPLLCLK2X";
+SYSCTL.UDIV              = "2";
+SYSCTL.validateClkStatus = true;
+
+scripting.suppress("For best practices when the CPUCLK is running at 32MHz and above, clear the flash status bit using DL_FlashCTL_executeClearStatus\\(\\) before executing any flash operation\\. Otherwise there may be false positives\\.", SYSCTL);
