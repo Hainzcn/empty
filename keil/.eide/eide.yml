@@ -89,6 +89,10 @@ targets:
               tag: IROM
         useCustomScatterFile: true
     uploadConfigMap:
+      Custom:
+        bin: ""
+        commandLine: '"A:/ti/uniflash_9.5.0/dslite.bat" --config="A:/ti/uniflash_9.5.0/user_files/configs/MSPM0G3507.ccxml" -e -f -v "${ExecutableName}.axf"'
+        eraseChipCommand: '"A:/ti/uniflash_9.5.0/dslite.bat" --config="A:/ti/uniflash_9.5.0/user_files/configs/MSPM0G3507.ccxml" -e'
       JLink:
         baseAddr: ""
         bin: ""
@@ -98,4 +102,4 @@ targets:
         otherCmds: ""
         proType: 1
         speed: 8000
-    uploader: JLink
+    uploader: Custom
